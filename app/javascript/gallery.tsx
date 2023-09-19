@@ -1,35 +1,32 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState} from 'react';
 import { createRoot } from 'react-dom/client';
-import { Gallery } from "react-grid-gallery";
+import PhotoAlbum from "react-photo-album";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import { images, CustomImage } from "./images";
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
 
-const slides = images.map(({ original, width, height }) => ({
-  src: original,
-  width,
-  height,
-}));
+import photos from "./photos";
 
 export default function App() {
   const [index, setIndex] = useState(-1);
 
-  const handleClick = (index: number, item: CustomImage) => setIndex(index);
-
   return (
-    <div>
-      <Gallery
-        images={images}
-        onClick={handleClick}
-        enableImageSelection={true}
-      />
+    <>
+      <PhotoAlbum photos={photos} layout="rows" targetRowHeight={200} onClick={({ index }) => setIndex(index)} />
+
       <Lightbox
-        slides={slides}
-        open={index >= 0}
-        index={index}
-        close={() => setIndex(-1)}
+          slides={photos}
+          open={index >= 0}
+          index={index}
+          close={() => setIndex(-1)}
+          // enable optional lightbox plugins
+          plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
       />
-    </div>
+    </>
   );
 }
 
