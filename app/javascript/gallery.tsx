@@ -21,7 +21,7 @@ export default function App() {
       <Gallery
         images={images}
         onClick={handleClick}
-        enableImageSelection={false}
+        enableImageSelection={true}
       />
       <Lightbox
         slides={slides}
@@ -34,7 +34,7 @@ export default function App() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("app");
+  const container: HTMLElement = document.getElementById("app");
   const root = createRoot(container);
   root.render(<App />);
 });

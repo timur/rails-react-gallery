@@ -8,8 +8,8 @@ export const images: CustomImage[] = [
   {
     src: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg",
     original: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg",
-    width: 320,
-    height: 174,
+    width: 1024,
+    height: 683,
     tags: [
       { value: "Nature", title: "Nature" },
       { value: "Flora", title: "Flora" },
